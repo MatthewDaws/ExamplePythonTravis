@@ -10,9 +10,21 @@ Learning how to properly structure a Python repository on GitHub, with unit test
    - [pytest](http://pythontesting.net/framework/pytest/pytest-introduction/)
    - [Continuous Integration](http://docs.python-guide.org/en/latest/scenarios/ci/)
 
+
 ## Repository structure
 
 Keep it simple.  Have a `readme.md`.
+
+[Python modules](https://docs.python.org/3/tutorial/modules.html) are just valid python files.  When you "import" a module, the file is executed by the python iterpreter.  Read the docs for more.
+
+A [Python package](https://docs.python.org/3/tutorial/modules.html#packages) is just a directory structure containing modules.  You add a `__init__.py` file to indicate that a directory is a package.  By default, this does nothing, and so it is common to include further `import` commands.
+
+   - For example, `import points` runs two commands:
+      - `import points.nn` which means that `points.nn` is imported into your namespace
+      - `from points.point import Point` which means that `Point` now becomes a type in your namespace
+      - see `example.py` for usage.  An interesting exercise is to change `__init__.py` to be empty, and see how then `example.py` needs to be modified.
+   
+To learn more, browse around github and see how they structure imports.  Or look at packages in your local python install.
 
 
 ## Tests
@@ -45,6 +57,6 @@ What's going on under the hood is that Travis will build your project on a set v
 ## Still to do
 
    - docs
-   - `requirements.txt` ??
+   - `requirements.txt` ??  Tried adding numpy, but that's already installed.
    - Talk about https://codecov.io/
    - Talk about pypi.python.org 
