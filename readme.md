@@ -54,6 +54,16 @@ If it all works, you should see your project on the travis page: [here's mine](h
 What's going on under the hood is that Travis will build your project on a set virtual machine image "in the cloud" (aka on one of their servers).  For python, there is no compile stage, and so the "build" stage is actually to run all of the tests.
 
 
+## Pip setup
+
+We should list the packages we require, both to help users, and to allow Travis to correctly install the dependencies.
+
+   - As an example, fork this repository, and change `requirements.txt` to an empty file
+   - The build should then fail, as `scipy` will no longer be found.
+   - Travis installs `numpy` automatically, along with `pytest`, but little else.
+
+TODO: Read up on how pip works.
+
 ## Still to do
 
    - docs
