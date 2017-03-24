@@ -6,7 +6,7 @@ def sample():
         if _np.random.random() <= x:
             return x
 
-from numpy.random import randint
+from numpy.random import randint as _randint
 
 def sample2():
-    return randint(low=0, high=10)
+    return _randint(low=0, high=10)

@@ -1,4 +1,5 @@
-[![Build Status](https://travis-ci.org/MatthewDaws/ExamplePythonTravis.svg?branch=master)](https://travis-ci.org/MatthewDaws/ExamplePythonTravis)
+[![Build Status](https://travis-ci.org/MatthewDaws/ExamplePythonTravis.svg?branch=master)](https://travis-ci.org/MatthewDaws/ExamplePythonTravis) 
+[![codecov.io](https://codecov.io/github/MatthewDaws/ExamplePythonTravis/coverage.svg?branch=master)](https://codecov.io/github/MatthewDaws/ExamplePythonTravis)
 
 # Example Python and Travis #
 
@@ -59,7 +60,9 @@ What's going on under the hood is that Travis will build your project on a set v
 So now we have unit tests, and we're running them on every push thanks to Travis.  How do we know that we're testing everything we should?  For this, we need a code coverage tool, and the common one to use with GitHub is:
 
 - [Codecov.io](https://codecov.io/)  Visit this and sign-up with your GitHub account
-- Use this example: [Codecov Python Example](https://github.com/codecov/example-python) and follow the examples.  
+- Use this example: [Codecov Python Example](https://github.com/codecov/example-python) and follow the examples.
+- I ended up adjusting `requirements.txt` and `.travis.yml`. 
+- See the source for this `readme.md` file for how to add the codecov badge.
 
 
 ## Pip setup
@@ -70,10 +73,44 @@ We should list the packages we require, both to help users, and to allow Travis 
    - The build should then fail, as `scipy` will no longer be found.
    - Travis installs `numpy` automatically, along with `pytest`, but little else.
 
-TODO: Read up on how pip works.
+Lots more [documentation here](https://pip.pypa.io/en/stable/reference/pip_install/).
+
+
+## Documentation
+
+Things were going so nicely...  but making nice documentation seems hard.
+
+### Write docstrings
+
+This at least is easy.
+
+- TODO: Lots more to say here
+
+### Sphinx
+
+To produce, say, HTML documentation which includes discussion, and extracted docstrings, the current best practice seems to be to use [Sphinx](http://www.sphinx-doc.org/en/stable/).
+
+- [Hitchhiker's guide to documentation](http://docs.python-guide.org/en/latest/writing/documentation/) which sadly seems to make it seem easier than it is.
+- [Sam Nicholls guide](https://samnicholls.net/2016/06/15/how-to-sphinx-readthedocs/) which is a more realistic guide to the pain which this is.
+- [Guide to reStructuredText](http://www.sphinx-doc.org/en/stable/rest.html)
+
+Clearly I need to spend some more time playing with Sphinx.  To get it at least vaguely working, I needed to slightly adapt Sam Nicholls's comment.  You need that when `conf.py` is run, from whatever directory it has ended up in, that the source code for our project can be imported.  As laid out here, we have `docs\sources\conf.py` while the package `points` can be imported from the root.  So relative to where `conf.py` is we need to step back two directories.  To do this, I added/edited the following in `conf.py`:
+
+    import os
+    import sys
+    sys.path.insert(0, os.path.abspath(os.path.join('..','..')))
+
+This makes the python interpreter search two directories up for imports.  Also do follow Sam's suggestion as regards running `sphinx-apidoc` (the generated files are now in source control, but by default, after running `sphinx-quickstart` they are not).
+
+The end result is not yet pretty, but at least works.
+
 
 ## Still to do
 
-   - docs
-   - Talk about https://codecov.io/
-   - Talk about pypi.python.org 
+   - `python setup.py install` should be added below.
+
+
+## Publishing your package
+
+We have no intention of doing this for our example, but the standard `pip` supported way is to visit [pypi.python.org](https://pypi.python.org/pypi) and follow the instructions.
+

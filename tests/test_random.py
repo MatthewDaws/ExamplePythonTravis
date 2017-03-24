@@ -33,12 +33,16 @@ def test_sample_rejects_first_pass():
 def fixed_random_integer(low, high):
     return 5
 
-# In points/random.py we do "from numpy.random import randint" and so the
-# symbol we need to 'patch' is "points.random.randint" and _not_
+# In points/random.py we do "from numpy.random import randint as _randint" and so the
+# symbol we need to 'patch' is "points.random._randint" and _not_
 # "numpy.random.randint".  See "Where to patch", currently at:
 #    https://docs.python.org/3/library/unittest.mock.html?highlight=patch#id5
 # Notice also that we cannot patch "testmod.randint" as "testmod" is just a
 # local name.
-@patch("points.random.randint", fixed_random_integer)
+#
+# By the way, why not just "from numpy.random import randint" ??
+# Because then Sphinx will try to create documentation, which involves it getting
+# itself into the numpy source code, which doesn't end entirely well.
+@patch("points.random._randint", fixed_random_integer)
 def test_sample2():
     assert( testmod.sample2() == 5 )
