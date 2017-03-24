@@ -54,6 +54,14 @@ If it all works, you should see your project on the travis page: [here's mine](h
 What's going on under the hood is that Travis will build your project on a set virtual machine image "in the cloud" (aka on one of their servers).  For python, there is no compile stage, and so the "build" stage is actually to run all of the tests.
 
 
+## Code coverage
+
+So now we have unit tests, and we're running them on every push thanks to Travis.  How do we know that we're testing everything we should?  For this, we need a code coverage tool, and the common one to use with GitHub is:
+
+- [Codecov.io](https://codecov.io/)  Visit this and sign-up with your GitHub account
+- Use this example: [Codecov Python Example](https://github.com/codecov/example-python) and follow the examples.  
+
+
 ## Pip setup
 
 We should list the packages we require, both to help users, and to allow Travis to correctly install the dependencies.
@@ -67,6 +75,5 @@ TODO: Read up on how pip works.
 ## Still to do
 
    - docs
-   - `requirements.txt` ??  Tried adding numpy, but that's already installed.
    - Talk about https://codecov.io/
    - Talk about pypi.python.org 

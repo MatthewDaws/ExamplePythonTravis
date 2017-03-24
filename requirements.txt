@@ -1,2 +1,4 @@
 pytest
 scipy
+codecov
+pytest-cov
