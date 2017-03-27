@@ -40,6 +40,8 @@ I have put tests in the `tests` directory:
 
 You can run the tests by executing `pytest` or `py.test` in the root directory of the project.
 
+See [tests readme](tests\readme.md) for more.
+
 
 ## Travis CI integration
 
