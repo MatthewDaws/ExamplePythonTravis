@@ -30,7 +30,7 @@ To learn more, browse around github and see how they structure imports.  Or look
 
 ## Tests
 
-Here I use [pytest](http://doc.pytest.org/en/latest/).  The docs are good.  I haven't explored, much at all, the features pytest gives you.  Nor have I looked at mocking etc.
+Here I use [pytest](http://doc.pytest.org/en/latest/).  The docs are good.  I haven't explored, much at all, the features pytest gives you.  The Python standard library comes with the `unittest` module which is more object orientated.  The mocking abilities in `unittest.mock` are very useful however.
 
 I have put tests in the `tests` directory:
 
