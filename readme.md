@@ -107,12 +107,14 @@ This makes the python interpreter search two directories up for imports.  Also d
 The end result is not yet pretty, but at least works.
 
 
-## Still to do
-
-   - `python setup.py install` should be added below.
-
-
 ## Publishing your package
 
 We have no intention of doing this for our example, but the standard `pip` supported way is to visit [pypi.python.org](https://pypi.python.org/pypi) and follow the instructions.
 
+- [Peter Downs' guide](http://peterdowns.com/posts/first-time-with-pypi.html) seems very nice
+- [Packaging user guide](https://packaging.python.org/) the official docs
+- [Guide to `distutils`](https://docs.python.org/3.6/distutils/index.html) from the Python docs
+
+Once you have a correctly written `setup.py` file, you can run `python setup.py install` which will automatically install the module `points`.  You can now run python anywhere and `import points` will work, reading the installed version, instead of the development version.  At least on my Windows install of Anaconda, you can see where the files are installed, and to "uninstall" simply delete them.
+
+If you have uploaded your package to PyPI correctly, then you can run `pip (un)install <package-name>`.
